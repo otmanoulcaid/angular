@@ -1,0 +1,37 @@
+<!-- <app-header />
+<main>
+  <ul id="users">
+    <li *ngFor="let user of users">
+        <app-user
+          [selected]="id === user.id" 
+          [user]="user"
+          (select)="onSelectUser($event)" />
+        />
+    </li>
+  </ul>
+
+  <app-tasks *ngIf="id; else fallback" [user]="user" />
+  <ng-template #fallback>
+      <app-tasks [user]="{id: 'u1', name: 'no body chosen', avatar: 'none'}" />
+  </ng-template>
+</main> -->
+<app-header />
+<main>
+  <ul id="users">
+    @for (user of users; track user.id) {
+        <li>
+          <app-user
+            [selected]="id === user.id"
+            [user]="user"
+            (select)="onSelectUser($event)" />
+        </li>
+      }
+  </ul>
+
+  @if (id) {
+    <app-tasks [user]="user" />
+  }
+  @else {
+    <p id="fallback">no body chosen yet</p>
+  }
+</main>
