@@ -1,0 +1,27 @@
+@if(!statics) {
+    <h2>please enter a value to calculate</h2>
+}
+@else {
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Investment Value</th>
+                <th>Interest(Year)</th>
+                <th>Total Interest</th>
+                <th>Inveted Capital</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (statistic of statics(); track statistic.year) {
+                <tr>
+                    <td>{{ statistic.year }}</td>
+                    <td>{{ statistic.valueEndOfYear | currency}}</td>
+                    <td>{{ statistic.interest | currency}}</td>
+                    <td>{{ statistic.totalInterest | currency}}</td>
+                    <td>{{ statistic.totalAmountInvested | currency}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
